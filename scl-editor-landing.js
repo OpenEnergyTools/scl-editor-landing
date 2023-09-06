@@ -8061,6 +8061,7 @@ class SclEditorLanding extends s$1 {
             ? this.newProjectName.value
             : `${this.newProjectName.value}.scd`;
         const version = (this.newDialog.querySelector('mwc-list').selected).value;
+        this.newDialog.close();
         this.dispatchEvent(newOpenEvent(newEmptySCD(docName.slice(0, -4), version), docName));
     }
     renderNewDialog() {
@@ -8115,7 +8116,7 @@ class SclEditorLanding extends s$1 {
           icon="create_new_folder"
           @click="${() => this.newDialog.show()}"
         >
-          <div class="landing_label">Open Project</div>
+          <div class="landing_label">New Project</div>
         </mwc-icon-button>
       </div>
       <input
@@ -8131,6 +8132,8 @@ class SclEditorLanding extends s$1 {
 }
 SclEditorLanding.styles = i$5 `
     :host {
+      width: 100%;
+      height: 100%;
       background-color: green;
     }
 
@@ -8169,8 +8172,11 @@ SclEditorLanding.styles = i$5 `
     }
 
     .landing_label {
+      position: absolute;
       width: 160px;
       height: 50px;
+      top: 0px;
+      left: 0px;
       margin-top: 100px;
       margin-left: -30px;
       font-family: 'Roboto', sans-serif;
